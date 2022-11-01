@@ -1,0 +1,36 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+name: Build source
+jobs:
+  build-frontend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    # defaults:
+    #   run:
+    #     working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          npm cache clean -force
+          npm cache verify
+          npm update
+      - run: |
+          npm install
+      - run: |
+          CI='' npm run build
+
+      - name: Merge master -> release
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: release
+          github_token: ${{ github.token }}
