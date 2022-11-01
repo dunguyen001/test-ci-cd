@@ -13,7 +13,7 @@ jobs:
     # defaults:
     #   run:
     #     working-directory: ./frontend
-    if: steps.auto-commit-action.outputs.changes_detected == 'true'
+    # if: steps.auto-commit-action.outputs.changes_detected == 'true'
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
