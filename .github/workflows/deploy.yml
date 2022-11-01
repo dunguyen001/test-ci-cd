@@ -1,11 +1,11 @@
 on:
   push:
-    branches: [master]
+    branches: [release]
   pull_request:
-    branches: [master]
-name: Build source
+    branches: [release]
+name: Deploy
 jobs:
-  build-frontend:
+  deploy-frontend:
     runs-on: ubuntu-latest
     strategy:
       matrix:
