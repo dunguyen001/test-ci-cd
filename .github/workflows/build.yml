@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           
   deploy-1:
-    needs: ['deploy-1']
+    needs: ['init']
     runs-on: ubuntu-latest
     strategy:
       matrix:
