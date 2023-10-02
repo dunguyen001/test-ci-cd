@@ -39,10 +39,6 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: |
-          npm cache clean -force
-          npm cache verify
-          npm update
-    
+      - uses: actions/checkout@v2    
       - uses: ./.github/actions/build-frontend
 
