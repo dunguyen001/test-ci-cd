@@ -25,7 +25,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - uses: printenv
+      - name: Check env
+        run: printenv
           
   deploy-1:
     needs: ['init']
@@ -38,7 +39,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: printenv
+      - name: Check env
+        run: printenv
       - uses: ./.github/actions/install-packages
 
   deploy-2:
@@ -49,6 +51,7 @@ jobs:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
-      - uses: printenv
+      - name: Check env
+        run: printenv
       - uses: ./.github/actions/build-frontend
 
