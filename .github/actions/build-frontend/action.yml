@@ -1,0 +1,13 @@
+inputs:
+  name:
+    description: "Deploy frontend"
+    default: "No name provided"
+runs:
+  needs: ['install-packages']
+  using: "composite"
+  steps:
+    - run: echo "Deploy frontend"
+    - run: |
+        npm run install
+    - run: |
+        npm run build

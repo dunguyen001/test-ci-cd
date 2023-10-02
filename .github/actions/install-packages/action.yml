@@ -1,0 +1,12 @@
+inputs:
+  name:
+    description: "Check packages"
+    default: "No name provided"
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Deploy backend"
+    - run: |
+        npm run install
+    - run: |
+        npm run build

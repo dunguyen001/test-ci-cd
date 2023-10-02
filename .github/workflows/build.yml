@@ -10,7 +10,7 @@ on:
   #   branches: [master]
 name: Build source
 jobs:
-  install-backages:
+  deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,25 +28,5 @@ jobs:
           npm cache clean -force
           npm cache verify
           npm update
-      - run: |
-          npm install
 
-  build-frontend:
-    needs: ['install-backages']
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    # defaults:
-    #   run:
-    #     working-directory: ./frontend
-    steps:
-      - run: |
-          CI='' npm run build
 
-      - name: Merge master -> release
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          target_branch: release
-          github_token: ${{ secrets.GITHUB_TOKEN }}
