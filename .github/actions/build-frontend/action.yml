@@ -1,13 +1,15 @@
+name: "asd"
+description: "ads"
 inputs:
   name:
     description: "Deploy frontend"
     default: "No name provided"
 runs:
-  needs: ['install-packages']
   using: "composite"
   steps:
     - run: echo "Deploy frontend"
-    - run: |
-        npm run install
-    - run: |
-        npm run build
+      shell: bash
+    - run: npm run install
+      shell: bash
+    - run: npm run build
+      shell: bash

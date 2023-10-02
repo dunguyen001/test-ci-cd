@@ -1,3 +1,5 @@
+name: ""
+description: ""
 inputs:
   name:
     description: "Check packages"
@@ -6,7 +8,8 @@ runs:
   using: "composite"
   steps:
     - run: echo "Deploy backend"
-    - run: |
-        npm run install
-    - run: |
-        npm run build
+      shell: bash
+    - run: npm run install
+      shell: bash
+    - run: npm run build
+      shell: bash
