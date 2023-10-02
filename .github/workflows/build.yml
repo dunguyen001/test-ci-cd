@@ -3,10 +3,11 @@ on:
     inputs:
       parameter:
         description: Deploy server
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    # branches: [master]
+  # push:
+  #   branches: [master]
+  # pull_request:
+  #   branches: [master]
 name: Build source
 jobs:
   build-frontend:
