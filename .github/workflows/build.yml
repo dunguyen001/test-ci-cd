@@ -1,4 +1,8 @@
 on:
+  workflow_dispatch:
+    inputs:
+      parameter:
+        description: Deploy server
   push:
     branches: [master]
   pull_request:
