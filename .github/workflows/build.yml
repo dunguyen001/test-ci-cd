@@ -10,7 +10,7 @@ on:
   #   branches: [master]
 name: Build source
 jobs:
-  build-frontend:
+  install-backages:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,6 +30,22 @@ jobs:
           npm update
       - run: |
           npm install
+
+  build-frontend:
+    needs: ['install-backages']
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    # defaults:
+    #   run:
+    #     working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: |
           CI='' npm run build
 
