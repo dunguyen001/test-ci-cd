@@ -7,6 +7,15 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+          npm cache clean -force
+          npm cache verify
+          npm update
+      shell: bash
     - run: echo "Deploy frontend"
       shell: bash
     - run: npm run install
