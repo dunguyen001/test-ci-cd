@@ -13,7 +13,7 @@ runs:
         node-version: ${{ matrix.node-version }}
     - run: echo "Deploy frontend"
       shell: bash
-    - run: npm run install
+    - run: npm install
       shell: bash
     - run: npm run build
       shell: bash
